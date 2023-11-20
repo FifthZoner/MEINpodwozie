@@ -12,8 +12,12 @@ void GetStickOutput( void ){
     #ifdef OUTPUT_TO_SERIAL
     Serial.print("Vertical stick: ");
     Serial.print(vertical);
-    Serial.print(" Horizontal stick: ");
+    Serial.print(", horizontal stick: ");
     Serial.println(horizontal);
+    Serial.print("Raw vertical: ");
+    Serial.print(pulseIn(pinStickVertical, HIGH));
+    Serial.print(", raw horizontal: ");
+    Serial.println(pulseIn(pinStickHorizontal, HIGH));
     #endif
 }
 

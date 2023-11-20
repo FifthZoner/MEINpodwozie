@@ -1,5 +1,6 @@
 #include "definitions.hpp"
 #include "controller.hpp"
+#include "movement.hpp"
 
 void setup() {
   pinMode(pinFrontLeftForward, OUTPUT);
@@ -19,6 +20,18 @@ void setup() {
 }
 
 void loop() {
+
   UpdateController();
 
+  #ifdef MOTOR_IDENTIFICATION
+
+  IdentifyMotors();
+
+  #else
+
+  MoveControllerAngle();
+
+  #endif
+
+  
 }

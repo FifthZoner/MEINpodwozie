@@ -19,6 +19,7 @@
 #define pinStickVertical 23
 
 #define valueControllerNoise 6
+#define valueControllerMappedNoise 3
 
 #define valueStickHorizontalUpper 0
 #define valueStickHorizontalLower 0
@@ -26,10 +27,11 @@
 #define valueStickVerticalLower 0
 
 // control definitions
-#define valueForwardSpeedMultiplier 1
+#define valueForwardSpeedMultiplier 1.f
 
 // debug definitions, uncomment ones that are not needed
 #define OUTPUT_TO_SERIAL
 #define DO_NOT_MOVE
+#define MOTOR_IDENTIFICATION
 
 #endif

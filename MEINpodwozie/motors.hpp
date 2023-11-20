@@ -2,12 +2,10 @@
 #define MOTORS_HPP
 
 #include <Arduino.h>
-#include <cstdint>
 
-void SetFrontRightMotor(int value){
-    #ifndef DO_NOT_MOVE
-    
-    #endif
-}
+void SetFrontLeftMotor(int value);
+void SetFrontRightMotor(int value);
+void SetBackLeftMotor(int value);
+void SetBackRightMotor(int value);
 
 #endif
