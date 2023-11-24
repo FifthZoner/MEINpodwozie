@@ -9,4 +9,6 @@ void IdentifyMotors( void );
 
 #endif
 
+void MoveControllerAngle( void );
+
 #endif

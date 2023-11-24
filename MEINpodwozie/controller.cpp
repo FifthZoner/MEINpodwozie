@@ -5,15 +5,15 @@
 ControllerOutput controllerOutput;
 
 void GetStickOutput( void ){
-    int vertical = map(pulseIn(pinStickVertical, HIGH), valueStickVerticalLower - valueControllerNoise, 
+    controllerOutput.stickVertical = map(pulseIn(pinStickVertical, HIGH), valueStickVerticalLower - valueControllerNoise, 
     valueStickVerticalUpper + valueControllerNoise, 0, 510) - 255;
-    int horizontal = map(pulseIn(pinStickHorizontal, HIGH), valueStickHorizontalLower - valueControllerNoise, 
+    controllerOutput.stickHorizontal = map(pulseIn(pinStickHorizontal, HIGH), valueStickHorizontalLower - valueControllerNoise, 
     valueStickHorizontalUpper + valueControllerNoise, 0, 510) - 255;
     #ifdef OUTPUT_TO_SERIAL
     Serial.print("Vertical stick: ");
-    Serial.print(vertical);
+    Serial.print(controllerOutput.stickVertical);
     Serial.print(", horizontal stick: ");
-    Serial.println(horizontal);
+    Serial.println(controllerOutput.stickHorizontal);
     Serial.print("Raw vertical: ");
     Serial.print(pulseIn(pinStickVertical, HIGH));
     Serial.print(", raw horizontal: ");

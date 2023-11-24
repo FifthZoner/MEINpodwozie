@@ -32,6 +32,8 @@
 // debug definitions, uncomment ones that are not needed
 #define OUTPUT_TO_SERIAL
 #define DO_NOT_MOVE
-#define MOTOR_IDENTIFICATION
+//#define MOTOR_IDENTIFICATION
+//#define REVERSE_VERTICAL
+//#define REVERSE_HORIZONTAL
 
 #endif
