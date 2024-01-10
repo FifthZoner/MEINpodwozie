@@ -25,6 +25,8 @@ void IdentifyMotors( void ){
     delay(500);
     SetFrontLeftMotor(255);
     delay(500);
+    SetFrontLeftMotor(127);
+    delay(500);
     SetFrontLeftMotor(0);
     delay(500);
     SetFrontLeftMotor(-63);
@@ -34,6 +36,8 @@ void IdentifyMotors( void ){
     SetFrontLeftMotor(-192);
     delay(500);
     SetFrontLeftMotor(-255);
+    delay(500);
+    SetFrontLeftMotor(-127);
     delay(500);
     SetFrontLeftMotor(0);
 
@@ -46,6 +50,8 @@ void IdentifyMotors( void ){
     delay(500);
     SetFrontRightMotor(255);
     delay(500);
+    SetFrontLeftMotor(127);
+    delay(500);
     SetFrontRightMotor(0);
     delay(500);
     SetFrontRightMotor(-63);
@@ -55,6 +61,8 @@ void IdentifyMotors( void ){
     SetFrontRightMotor(-192);
     delay(500);
     SetFrontRightMotor(-255);
+    delay(500);
+    SetFrontLeftMotor(-127);
     delay(500);
     SetFrontRightMotor(0);
 
@@ -67,6 +75,8 @@ void IdentifyMotors( void ){
     delay(500);
     SetBackLeftMotor(255);
     delay(500);
+    SetFrontLeftMotor(127);
+    delay(500);
     SetBackLeftMotor(0);
     delay(500);
     SetBackLeftMotor(-63);
@@ -76,6 +86,8 @@ void IdentifyMotors( void ){
     SetBackLeftMotor(-192);
     delay(500);
     SetBackLeftMotor(-255);
+    delay(500);
+    SetFrontLeftMotor(-127);
     delay(500);
     SetBackLeftMotor(0);
 
@@ -88,6 +100,8 @@ void IdentifyMotors( void ){
     delay(500);
     SetBackRightMotor(255);
     delay(500);
+    SetFrontLeftMotor(127);
+    delay(500);
     SetBackRightMotor(0);
     delay(500);
     SetBackRightMotor(-63);
@@ -97,6 +111,8 @@ void IdentifyMotors( void ){
     SetBackRightMotor(-192);
     delay(500);
     SetBackRightMotor(-255);
+    delay(500);
+    SetFrontLeftMotor(-127);
     delay(500);
     SetBackRightMotor(0);
     
@@ -130,6 +146,7 @@ struct MotorValues {
         else if (br >= fl and br >= fr and br >= bl) {
             max = abs(br);
         }
+        
         if (max > 255){
             float multiplier = float(max) / 255;
             fl *= multiplier;
@@ -165,17 +182,37 @@ struct MotorValues {
 void MoveControllerAngle( void ){
 
     #ifndef REVERSE_VERTICAL
-    MotorValues temp = MotorValues(1, 1, 1, 1) * controllerOutput.stickVertical;
+    MotorValues temp = MotorValues(1, 1, 1, 1);
+    temp.fr = temp.fr * controllerOutput.stickVertical * valueForwardSpeedMultiplier;
+    temp.fl = temp.fl * controllerOutput.stickVertical * valueForwardSpeedMultiplier;
+    temp.br = temp.br * controllerOutput.stickVertical * valueForwardSpeedMultiplier;
+    temp.bl = temp.bl * controllerOutput.stickVertical * valueForwardSpeedMultiplier;
     #else
-    MotorValues temp = MotorValues(-1, -1, -1, -1) * controllerOutput.stickVertical;
+    MotorValues temp = MotorValues(-1, -1, -1, -1) * controllerOutput.stickVertical * valueForwardSpeedMultiplier;
     #endif
 
     #ifndef REVERSE_HORIZONTAL
-    temp += MotorValues(-1, 1, 1, -1) * controllerOutput.stickHorizontal;
+    //temp += MotorValues(-1, 1, 1, -1) * float(controllerOutput.stickHorizontal);
+    temp.fr = temp.fr + controllerOutput.stickHorizontal;
+    temp.fl = temp.fl - controllerOutput.stickHorizontal;
+    temp.br = temp.br - controllerOutput.stickHorizontal;
+    temp.bl = temp.bl + controllerOutput.stickHorizontal;
     #else
     temp += MotorValues(1, -1, -1, 1) * controllerOutput.stickHorizontal;
     #endif
     
-    temp.scaleValue();
+    //temp.scaleValue();
+
+    #ifdef OUTPUT_TO_SERIAL
+    Serial.print(temp.fl);
+    Serial.print(" ");
+    Serial.print(temp.fr);
+    Serial.print(" ");
+    Serial.print(temp.bl);
+    Serial.print(" ");
+    Serial.println(temp.br);
+    
+    #endif
+
     temp.apply();
 }

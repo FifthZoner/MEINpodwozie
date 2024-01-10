@@ -10,14 +10,15 @@ void GetStickOutput( void ){
     controllerOutput.stickHorizontal = map(pulseIn(pinStickHorizontal, HIGH), valueStickHorizontalLower - valueControllerNoise, 
     valueStickHorizontalUpper + valueControllerNoise, 0, 510) - 255;
     #ifdef OUTPUT_TO_SERIAL
-    Serial.print("Vertical stick: ");
-    Serial.print(controllerOutput.stickVertical);
-    Serial.print(", horizontal stick: ");
-    Serial.println(controllerOutput.stickHorizontal);
-    Serial.print("Raw vertical: ");
-    Serial.print(pulseIn(pinStickVertical, HIGH));
-    Serial.print(", raw horizontal: ");
-    Serial.println(pulseIn(pinStickHorizontal, HIGH));
+    //delay(500);
+    //Serial.print("Vertical stick: ");
+    //Serial.print(controllerOutput.stickVertical);
+    //Serial.print(", horizontal stick: ");
+    //Serial.println(controllerOutput.stickHorizontal);
+    //Serial.print("Raw vertical: ");
+    //Serial.print(pulseIn(pinStickVertical, HIGH));
+    //Serial.print(", raw horizontal: ");
+    //Serial.println(pulseIn(pinStickHorizontal, HIGH));
     #endif
 }
 

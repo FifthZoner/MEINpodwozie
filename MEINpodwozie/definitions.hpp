@@ -5,12 +5,12 @@
 #define DEFINITIONS_HPP
 
 // PWM pins
-#define pinFrontLeftForward 2
-#define pinFrontLeftBackward 3
-#define pinFrontRightForward 4
-#define pinFrontRightBackward 5
-#define pinBackLeftForward 6
-#define pinBackLeftBackward 7
+#define pinFrontLeftForward 5
+#define pinFrontLeftBackward 4
+#define pinFrontRightForward 2
+#define pinFrontRightBackward 3
+#define pinBackLeftForward 7
+#define pinBackLeftBackward 6
 #define pinBackRightForward 8
 #define pinBackRightBackward 9
 
@@ -18,20 +18,20 @@
 #define pinStickHorizontal 22
 #define pinStickVertical 23
 
-#define valueControllerNoise 6
-#define valueControllerMappedNoise 3
+#define valueControllerNoise 20
+#define valueControllerMappedNoise 15
 
-#define valueStickHorizontalUpper 0
-#define valueStickHorizontalLower 0
-#define valueStickVerticalUpper 0
-#define valueStickVerticalLower 0
+#define valueStickHorizontalUpper 1972
+#define valueStickHorizontalLower 978
+#define valueStickVerticalUpper 1955
+#define valueStickVerticalLower 978
 
 // control definitions
 #define valueForwardSpeedMultiplier 1.f
 
 // debug definitions, uncomment ones that are not needed
 #define OUTPUT_TO_SERIAL
-#define DO_NOT_MOVE
+//#define DO_NOT_MOVE
 //#define MOTOR_IDENTIFICATION
 //#define REVERSE_VERTICAL
 //#define REVERSE_HORIZONTAL
